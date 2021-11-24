@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<!-- CSS  -->
+<link href="https://vjs.zencdn.net/7.2.3/video-js.css" rel="stylesheet">
+<style>
+.intro {
+  border: none;
+  color: white;
+  background-color: blue;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: text;
+}
+
+.button {
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.skaiButton {
+  background-color: white;
+  color: black;
+  border: 2px solid #008CBA;
+}
+
+.skaiButton:hover {
+  background-color: #008CBA;
+  color: white;
+}
+</style>
+<!-- JS code -->
+<!-- Video JS Libraries -->
+    <script src="https://vjs.zencdn.net/ie8/ie8-version/videojs-ie8.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.14.1/videojs-contrib-hls.js"></script>
+    <script src="https://vjs.zencdn.net/7.2.3/video.js"></script>
+</head>
+
+<body>
+<!-- HTML -->
+<button class="intro" disabled>Welcome to Papou TV!</button>
+<button class="button skaiButton", onclick="skaiNews()">Skai News</button>
+<button class="button skaiButton", onclick="skaiTV()">Skai Live TV</button>
+<button class="button skaiButton", onclick="ertWorld()">ERT Live TV</button>
+<video id='papouTV'  class="video-js vjs-default-skin" width="1250" height="500" controls>
+<source type="application/x-mpegURL" src="">
+</video>
+<!-- Page Script -->
+    <script>
+    var newsURL = "https://videostream.skai.gr/skaivod/_definst_/mp4:skai/202111/video/news/deltio20211123.mp4/chunklist.m3u8";
+    var liveURL = "https://skai-live-back.siliconweb.com/media/cambria4/index.m3u8";
+    var ertWorldURL = "https://ert-live-bcbs15228.siliconweb.com/media/ert_world/ert_world.m3u8";
+
+    var player = videojs('papouTV');
+
+    function skaiNews() {
+    	player.src({type: "application/x-mpegURL", src: newsURL});
+    	player.play();
+    }
+    function skaiTV() {
+    	player.src({type: "application/x-mpegURL", src: liveURL});
+    	player.play();
+    }
+    function ertWorld() {
+    	player.src({type: "application/x-mpegURL", src: ertWorldURL});
+    	player.play();
+    }
+    skaiNews()
+    </script>
+</body>
+</html>
